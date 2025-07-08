@@ -16,15 +16,13 @@
                 .then(response => response.json())
                 .then(data => {
                     const streamInfo = data.find(item => item.id === streamId);
-                    if (!streamInfo) return;
-                    
                     const iframe = document.getElementById('stream-iframe');
-                    if (streamInfo.title) {
-                    
-                        const key = encodeURIComponent(streamInfo.m3u8); iframe.src =`https://tv4wap.github.io/p13?url=${key}`;
-                    } else if (streamInfo.mpd) {
-                        iframe.src = streamInfo.mpd;
-                    }
+                    if (streamInfo.m3u8) {
+                    const key= encodeURIComponent(streamInfo.m3u8);
+                           
+                     
+ iframe.src =`https://tv4wap.github.io/p13/?url=${key}`;
+                    } 
                 });
         });
     </script> 
