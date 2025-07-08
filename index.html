@@ -1,10 +1,10 @@
 
 
 
-</script> 
+
   <meta charset="UTF-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-  <title>TV4WAP CRICHD</title> 
+  <title>TV4WAP LIVE4WAP SONY </title> 
   <script>
         document.addEventListener('DOMContentLoaded', function() {
             const urlParams = new URLSearchParams(window.location.search);
@@ -12,18 +12,18 @@
             
             if (!streamId) return;
             
-            fetch('https://live4wap.neocities.org/SPORTS/crichd.txt')
+            fetch('https://raw.githubusercontent.com/Shubhamkur/Tv/refs/heads/main/sony2')
                 .then(response => response.json())
                 .then(data => {
                     const streamInfo = data.find(item => item.id === streamId);
                     if (!streamInfo) return;
                     
                     const iframe = document.getElementById('stream-iframe');
-                    if (streamInfo.name && streamInfo.name) {
-                    const logo = encodeURIComponent(streamInfo.name);
-                        const key = encodeURIComponent(streamInfo.id); iframe.src =`https://live4wap.github.io/crichd?id=${key}`;
-                    } else if (streamInfo.m3u8) {
-                        iframe.src = streamInfo.m3u8;
+                    if (streamInfo.title) {
+                    
+                        const key = encodeURIComponent(streamInfo.m3u8); iframe.src =`https://tv4wap.github.io/p13?url=${key}`;
+                    } else if (streamInfo.mpd) {
+                        iframe.src = streamInfo.mpd;
                     }
                 });
         });
